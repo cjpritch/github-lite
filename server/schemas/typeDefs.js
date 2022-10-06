@@ -17,7 +17,7 @@ type Project{
 
 type Tag{
     _id: ID
-    name: string
+    name: String
 }
 
 type Auth {
@@ -36,7 +36,8 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    
+    addProject(title: String!, link: String!): Project
+    addTag(name: String!): Project
 }
 `;
 module.exports = typeDefs;

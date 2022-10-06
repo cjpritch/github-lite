@@ -4,13 +4,13 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async(parent, args, context) => {
+        me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user })
                     .select('-_v -password')
                     .populate('projects')
-                    
-                    return userData;
+
+                return userData;
             }
         },
         // get all users
@@ -32,7 +32,7 @@ const resolvers = {
         project: async (parent, { _id }) => {
             return Project.findOne({ _id });
         },
-        
+
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -57,7 +57,36 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        addProject: async (parent, args, context) => {
+            if (context.user) {
+                const project = await Project.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { projects: project._id } },
+                    { new: true }
+                );
+
+                return project;
+            }
+
+            throw new AuthenticationError('You need to be logged in');
+        },
+        addTag: async (parent, { tagName }, context) => {
+            if (context.user) {
+              const updatedProject = await Project.findOneAndUpdate(
+                { _id: context.project._id },
+                { $addToSet: { tags: tagName } },
+                { new: true }
+              ).populate('tags');
+          
+              return updatedProject;
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
+          }
         //more mutations can go here
+
     }
 };
 
