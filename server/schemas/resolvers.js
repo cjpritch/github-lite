@@ -32,7 +32,7 @@ const resolvers = {
         project: async (parent, { _id }) => {
             return Project.findOne({ _id });
         },
-
+        //more queries here.  we need to search by tags
     },
     Mutation: {
         addUser: async (parent, args) => {

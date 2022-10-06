@@ -31,6 +31,7 @@ type Query {
     user(username: String!): User
     projects(username: String): [Project]
     project(_id: ID!): Project
+    
 }
 
 type Mutation {
