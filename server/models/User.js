@@ -47,6 +47,11 @@ UserSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
+//Virtual to return project count, maybe not needed, but added b/c of line 32
+UserSchema.virtual('projectCount').get(function() {
+  return this.projects.length;
+});
+
 const User = model('User', UserSchema);
 
 module.exports = User;
