@@ -19,6 +19,8 @@ db.once('open', async () => {
   }
 
   const createdUsers = await User.collection.insertMany(userData);
+  
+//   console.log(createdUsers);
 
   // create friends
   // this logic commented out because no friends in this app.  kept here because I may want to refer to it when I get around to seeding the tags below
@@ -29,7 +31,7 @@ db.once('open', async () => {
 //     let friendId = userId;
 
 //     while (friendId === userId) {
-//       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    //   const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
 //       friendId = createdUsers.ops[randomUserIndex];
 //     }
 
@@ -38,10 +40,11 @@ db.once('open', async () => {
 
   // create Projects
   let createdProjects = [];
+
   for (let i = 0; i < 100; i += 1) {
     const title = faker.lorem.words(Math.round(Math.random() * 20) + 1);
     const description = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-    const link = faker.internet.url;
+    const link = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
@@ -50,7 +53,7 @@ db.once('open', async () => {
 
     const updatedUser = await User.updateOne(
       { _id: userId },
-      { $push: { Projects: createdProjectt._id } }
+      { $push: { Projects: createdProject._id } }
     );
 
     createdProjects.push(createdProject);
