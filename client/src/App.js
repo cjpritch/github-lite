@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './components/Footer';
 
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -12,7 +11,7 @@ import Footer from './components/Footer';
 // import NoMatch from './pages/NoMatch';
 
 function App() {
-  return ();
+  return <h1>hi.</h1>;
 }
 
 export default App;
