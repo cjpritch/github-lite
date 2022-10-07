@@ -48,11 +48,32 @@ export const QUERY_USER = gql`
   }
 `;
 
-// type Query {
-//     me: User
-//     users: [User]
-//     user(username: String!): User
-//     projects(username: String): [Project]
-//     project(_id: ID!): Project
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      projectCount
+      projects {
+        _id
+        title
+        link
+        tags {
+          _id
+          name
+        }
+      }
+    }
+  }
+`;
 
-// }
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+    }
+  }
+`;
