@@ -73,6 +73,8 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in');
         },
         addTag: async (parent, { tagName }, context) => {
+            console.log(context.user);
+            console. log(context.project);
             if (context.user) {
               const updatedProject = await Project.findOneAndUpdate(
                 { _id: context.project._id },
