@@ -1,16 +1,17 @@
 const { Schema, model } = require('mongoose');
 
-const TagSchema = new Schema(
-    {
-        tagId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId() 
-        },
-        name: {
-            type: String
-        }
-    }
-)
+// const TagSchema = new Schema(
+//     {
+//         tagId: {
+//             type: Schema.Types.ObjectId,
+//             default: () => new Types.ObjectId() 
+//         },
+//         name: {
+//             type: String
+//         }
+//     }
+// )
+// This has been moved to its own file.  Tag array in project is only storing object ids, want to see if I can get it working better this way
 
 const ProjectSchema = new Schema(
     {
@@ -27,7 +28,12 @@ const ProjectSchema = new Schema(
             required: true,
             unique: true
         },
-        tags: [TagSchema]
+        tags: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Tag'
+            }
+        ]
     }
 )
 
