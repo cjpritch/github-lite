@@ -1,4 +1,4 @@
-const { User, Project } = require('../models');
+const { User, Project, Tag } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -12,6 +12,7 @@ const resolvers = {
 
                 return userData;
             }
+            throw new AuthenticationError('Not logged in');
         },
         // get all users
         users: async () => {
@@ -74,9 +75,9 @@ const resolvers = {
         },
         addTag: async (parent, name) => {
             const tag = await Tag.create(name);
-          
-              return tag;
-            },
+
+            return tag;
+        },
         //more mutations can go here
 
     }

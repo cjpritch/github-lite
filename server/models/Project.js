@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const TagSchema = require('./Tag');
 
 // const TagSchema = new Schema(
 //     {
@@ -28,12 +29,7 @@ const ProjectSchema = new Schema(
             required: true,
             unique: true
         },
-        tags: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Tag'
-            }
-        ]
+        tags: [TagSchema]
     }
 )
 
