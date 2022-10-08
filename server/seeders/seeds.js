@@ -1,11 +1,12 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-const { Project, User } = require('../models');
+const { Project, User, Tag } = require('../models');
 
 db.once('open', async () => {
     await Project.deleteMany({});
     await User.deleteMany({});
+    await Tag.deleteMany({});
 
     // create user data
     const userData = [];
@@ -45,29 +46,16 @@ db.once('open', async () => {
 
 
     // create tags
-    const sampleTags = ['MERN', 'Node/Express', 'front-end'];
-    // have list of tags to choose from, following logic will then be changed to choose tags randomly and then apply them to the projects created above
-
-    for (let i = 0; i < 100; i += 1) {
-        const name = sampleTags[Math.round(Math.random() * 2) + 1];
+    const sampleTags = ["MERN", "Node/Express", "front-end", "REACT"];
+    const tagsData = [];
+    
+    for (let i = 0; i < 4; i += 1) {
+        const name = sampleTags[i];
         
-        const randomProjectIndex = Math.floor(Math.random() * createdProjects.length);
-        const { title }  = createdProjects[randomProjectIndex];
-        
-        
-console.log(await Project.findOne({title: title}))
-        console.log(title)
-
-        await Project.updateOne(
-            { title:  title  },
-            { $addToSet: { tags: name  } },  { safe: true, upsert: true }, (err, data) => {
-                if (err){
-                    console.log(err);
-                }
-                console.log(data)
-                } 
-        );
+        tagsData.push( {name} );
+       
     }
+    const createdTags = await Tag.collection.insertMany(tagsData);
 
     console.log('all done!');
     process.exit(0);

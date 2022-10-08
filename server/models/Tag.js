@@ -3,7 +3,10 @@ const { Schema, model } = require('mongoose');
 const TagSchema = new Schema(
     {
         name: {
-            type: String
+            type: String,
+            required: true,
+            unique: true,
+            trim: true
         }
     }
 )

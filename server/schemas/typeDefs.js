@@ -8,16 +8,16 @@ type User{
     projects: [Project]
 }
 
+type Tag{
+    _id: ID!
+    name: String
+}
+
 type Project{
     _id: ID
     title: String
     link: String
     tags: [Tag]
-}
-
-type Tag{
-    _id: ID
-    name: String
 }
 
 type Auth {
@@ -38,7 +38,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addProject(title: String!, link: String!, description: String!): Project
-    addTag(name: String!): Project
+    addTag(name: String!): Tag
 }
 `;
 module.exports = typeDefs;
