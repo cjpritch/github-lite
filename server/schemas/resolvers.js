@@ -73,11 +73,26 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in');
         },
-        addTag: async (parent, name) => {
+        createTag: async (parent, name) => {
             const tag = await Tag.create(name);
 
             return tag;
         },
+        addTag: async (parent, { tagName }, context) => {
+            console.log(context.user);
+            console. log(context.project);
+            if (context.user) {
+              const updatedProject = await Project.findOneAndUpdate(
+                { _id: context.project._id },
+                { $addToSet: { tags: tagName } },
+                { new: true }
+              ).populate('tags');
+          
+              return updatedProject;
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
+          }
         //more mutations can go here
 
     }

@@ -9,7 +9,7 @@ type User{
 }
 
 type Tag{
-    _id: ID!
+    _id: ID
     name: String
 }
 
@@ -37,8 +37,9 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addProject(title: String!, link: String!, description: String!, tags: [String]): Project
-    addTag(name: String!): Tag
+    addProject(title: String!, link: String!, description: String!): Project
+    createTag(name: String!): Tag
+    addTag(name: String!, projectId: String!): Project
 }
 `;
 module.exports = typeDefs;

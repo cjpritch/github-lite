@@ -14,4 +14,4 @@ const TagSchema = new Schema(
 const Tag = model('Tag', TagSchema)
 
 
-module.exports = TagSchema
+module.exports = TagSchema, Tag
