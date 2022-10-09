@@ -18,34 +18,53 @@ const Login = (props) => {
     });
   };
 
-    // submit form
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-    
-        try {
-          const { data } = await login({
-            variables: { ...formState },
-          });
-    
-          Auth.login(data.login.token);
-        } catch (e) {
-          console.error(e);
-        }
-      };
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-    return (
-<form>
-    <div className="mb-3">
-      <label for="loginEmail" className="form-label">Email address</label>
-      <input type="email" className="form-control"/>
-    </div>
-    <div className="mb-3">
-      <label for="loginPassword" className="form-label">Password</label>
-      <input type="password" className="form-control"/>
-    </div>
-    <button type="submit" className="btn">Login</button>
-</form>
-    );
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <main>
+      <form onSubmit={handleFormSubmit}>
+        <div className="mb-3">
+          <label
+            for="loginEmail"
+            className="form-label"
+            value={formState.email}
+            onChange={handleChange}
+          >
+            Email address
+          </label>
+          <input type="email" className="form-control" />
+        </div>
+        <div className="mb-3">
+          <label
+            for="loginPassword"
+            className="form-label"
+            value={formState.password}
+            onChange={handleChange}
+          >
+            Password
+          </label>
+          <input type="password" className="form-control" />
+        </div>
+        <button type="submit" className="btn">
+          Login
+        </button>
+      </form>
+      {error && <div>Login failed</div>}
+    </main>
+  );
 };
 
 export default Login;
