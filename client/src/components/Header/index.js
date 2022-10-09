@@ -13,29 +13,41 @@ const Header = () => {
   // user has to log in to gain access to user-based features in the nav bar
   return (
     <header>
-      <div>
-        <Link to="/">
-          <h1>GitHub Lite</h1>
-        </Link>
-
-        <nav>
+    <nav className="navbar navbar-expand-lg border">
+        <div className="container-fluid">
+          <Link to="/"><h1 className='navbar-brand'>GitHub Lite</h1></Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarText">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           {Auth.loggedIn() ? (
-            <>
-              <Link to="/profile">Profile</Link>
-              <a href="/" onClick={logout}>
-                Logout
-              </a>
+          <>
+              <li className="nav-item">
+                <Link to="/profile"><a className="nav-link">Profile</a></Link>
+              </li>
+              <li>
+                <a href="/" onClick={logout}>Logout</a>
+              </li>
             </>
-          ) : (
+            ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <li className="nav-item">
+              <Link to="/login"><a className="nav-link">Login</a></Link>
+              </li>
+
+              <li className="nav-item">
+              <Link to="/signup"><a className="nav-link">Signup</a></Link>
+              </li>
             </>
           )}
-        </nav>
-      </div>
-    </header>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
   );
 };
 
 export default Header;
+

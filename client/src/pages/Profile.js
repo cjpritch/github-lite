@@ -23,7 +23,7 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  return ();
+  return
 }
 
 export default Profile;

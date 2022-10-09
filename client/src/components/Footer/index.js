@@ -1,9 +1,10 @@
 import React from 'react';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer>
-      <div>Our Names Here.</div>
+      <div>&copy; Github Lite {currentYear}</div>
     </footer>
   );
 };

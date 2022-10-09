@@ -1,0 +1,84 @@
+<!--General static page to test layouts/styling-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Github Lite</title>
+</head>
+
+<body>
+<!--Header-->
+<header>
+    <nav class="navbar navbar-expand-lg border">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Github Lite</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Signup</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+<div class="container">
+  <div class="row"> 
+<!--New Project Form-->
+<div class="col-sm-3">
+  <form class="border">
+    <div class="form-group">
+      <label for="projectTitle">Title</label>
+      <input class="form-control" placeholder="Enter your project's title">
+    </div>
+    <div class="form-group">
+      <label for="projectDescription">Description</label>
+      <input class="form-control" placeholder="Enter a description of your project">
+    </div>
+    <div class="form-group">
+      <label for="projectTags">Tags</label>
+      <input class="form-control" placeholder="Enter which languages/technologies you would like to tag">
+    </div>
+    <div class="form-group">
+      <label for="projectLink">Link</label>
+      <input class="form-control" placeholder="Enter a link to your project or project's github">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<!--Projects Listed-->
+<div class="border col-sm-9">
+    <h3>Most Recent Posts</h3>
+        <div>
+            <div class="card mb-3">
+              <p class="card-header">Name of Project</p>
+              <div class="card-body">
+                  <p class="mb-0">About the project here</p>
+              </div>
+            </div>
+      </div>
+</div>
+</div>
+</div>
+
+<!--Footer-->
+<footer>
+    <div>&copy; Github Lite 2022</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
