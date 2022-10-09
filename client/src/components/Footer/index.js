@@ -10,3 +10,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// display at bottom of page, never changes

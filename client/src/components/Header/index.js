@@ -13,41 +13,62 @@ const Header = () => {
   // user has to log in to gain access to user-based features in the nav bar
   return (
     <header>
-    <nav className="navbar navbar-expand-lg border">
+      <nav className="navbar navbar-expand-lg border">
         <div className="container-fluid">
-          <Link to="/"><h1 className='navbar-brand'>GitHub Lite</h1></Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <Link to="/">
+            <h1 className="navbar-brand">GitHub Lite</h1>
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          {Auth.loggedIn() ? (
-          <>
-              <li className="nav-item">
-                <Link to="/profile"><a className="nav-link">Profile</a></Link>
-              </li>
-              <li>
-                <a href="/" onClick={logout}>Logout</a>
-              </li>
-            </>
-            ) : (
-            <>
-              <li className="nav-item">
-              <Link to="/login"><a className="nav-link">Login</a></Link>
-              </li>
+              {Auth.loggedIn() ? (
+                <>
+                  <li className="nav-item">
+                    <Link to="/profile">
+                      <a className="nav-link">Profile</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <a href="/" onClick={logout}>
+                      Logout
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link to="/login">
+                      <a className="nav-link">Login</a>
+                    </Link>
+                  </li>
 
-              <li className="nav-item">
-              <Link to="/signup"><a className="nav-link">Signup</a></Link>
-              </li>
-            </>
-          )}
+                  <li className="nav-item">
+                    <Link to="/signup">
+                      <a className="nav-link">Signup</a>
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
       </nav>
-</header>
+    </header>
   );
 };
 
 export default Header;
 
+// display at top of page with nav bar that changes if user is logged in
+// if logged out: display login and signup
+// if logged in: display profile and logout

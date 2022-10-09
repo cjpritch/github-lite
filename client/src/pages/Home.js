@@ -9,6 +9,14 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.projects || [];
 
+  function filterProducts() {
+    if (!currentTag) {
+      return projects;
+    }
+
+    return projects.filter((project) => project.tag._id === currentTag);
+  }
+
   //   const loggedIn = Auth.loggedIn();
 
   return (
@@ -27,3 +35,6 @@ const Home = () => {
 };
 
 export default Home;
+
+// need to have list of projects and list of tags both on the home page
+// and be able to filter the projects by the tag
