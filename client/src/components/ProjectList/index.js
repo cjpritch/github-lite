@@ -8,17 +8,17 @@ const ProjectList = ({ projects, title }) => {
 
   return (
     <div className="border col-sm-9">
-    <h3>Most Recent Posts</h3>
-        <div>
-            <div className="card mb-3">
-              <p className="card-header">Name of Project</p>
-              <div className="card-body">
-                  <p className="mb-0">About the project here</p>
-              </div>
-            </div>
+      <h3>Most Recent Posts</h3>
+      <div>
+        <div className="card mb-3">
+          <p className="card-header">{title}</p>
+          <div className="card-body">
+            <p className="mb-0">About the project here</p>
+          </div>
+        </div>
       </div>
-</div>
-      );
+    </div>
+  );
 };
 
 export default ProjectList;
