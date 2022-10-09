@@ -13,13 +13,15 @@ const Home = () => {
 
   return (
     <main>
-      <div>
+      <div className='container'>
+        <div className='row'>
         {loading ? (
           <div>Loading...</div>
         ) : (
           <ProjectList thoughts={projects} title="" />
         )}
       </div>
+    </div>
     </main>
   );
 };

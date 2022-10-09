@@ -33,7 +33,19 @@ const Login = (props) => {
         }
       };
 
-    return ();
+    return (
+<form>
+    <div className="mb-3">
+      <label for="loginEmail" className="form-label">Email address</label>
+      <input type="email" className="form-control"/>
+    </div>
+    <div className="mb-3">
+      <label for="loginPassword" className="form-label">Password</label>
+      <input type="password" className="form-control"/>
+    </div>
+    <button type="submit" className="btn">Login</button>
+</form>
+    );
 };
 
 export default Login;

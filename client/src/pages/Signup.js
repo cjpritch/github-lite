@@ -38,7 +38,19 @@ const Signup = () => {
     }
   };
 
-    return ();
+    return (
+<form>
+    <div className="mb-3">
+      <label for="signupEmail" className="form-label">Email address</label>
+      <input type="email" className="form-control"/>
+    </div>
+    <div className="mb-3">
+      <label for="signupPassword" className="form-label">Password</label>
+      <input type="password" className="form-control"/>
+    </div>
+    <button type="submit" className="btn">Sign Up</button>
+</form>
+    );
 };
 
 export default Signup;
