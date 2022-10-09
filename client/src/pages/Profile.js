@@ -23,7 +23,24 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  return
-}
+  if (!user?.username) {
+    return (
+      <h4>
+        You need to be logged in to see this page. Use the navigation links
+        above to sign up or log in!
+      </h4>
+    );
+  }
+
+  return (
+    <main>
+      <ProjectList
+        projects={user.thoughts}
+        title={`${user.username}'s projects!`}
+      />
+      <ProjectForm />
+    </main>
+  );
+};
 
 export default Profile;
