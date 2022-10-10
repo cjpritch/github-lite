@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const TagSchema = require('./Tag');
 
 // const TagSchema = new Schema(
 //     {
@@ -13,6 +12,7 @@ const TagSchema = require('./Tag');
 //     }
 // )
 // This has been moved to its own file.  Tag array in project is only storing object ids, want to see if I can get it working better this way
+// new Edit: tags removed in favor of boolean fields in project model
 
 const ProjectSchema = new Schema(
     {
@@ -33,7 +33,7 @@ const ProjectSchema = new Schema(
             type: Boolean,
             default: false
         },
-        is BackEnd: {
+        isBackEnd: {
             type: Boolean, 
             default: false
         },
