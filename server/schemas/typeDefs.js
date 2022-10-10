@@ -8,16 +8,13 @@ type User{
     projects: [Project]
 }
 
-type Tag{
-    _id: ID
-    name: String
-}
-
 type Project{
     _id: ID
     title: String
     link: String
-    tags: [Tag]
+    isFrontEnd: Boolean
+    isBackEnd: Boolean
+    isFullStack: Boolean
 }
 
 type Auth {
@@ -37,9 +34,8 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addProject(title: String!, link: String!, description: String!): Project
-    createTag(name: String!): Tag
-    addTag(name: String!, projectId: String!): Project
+    addProject(title: String!, link: String!, description: String!, isFrontEnd: Boolean, isBackEnd: Boolean, isFullStack: Boolean): Project
+
 }
 `;
 module.exports = typeDefs;

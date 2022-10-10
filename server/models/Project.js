@@ -29,7 +29,18 @@ const ProjectSchema = new Schema(
             required: true,
             unique: true
         },
-        tags: [TagSchema]
+        isFrontEnd: {
+            type: Boolean,
+            default: false
+        },
+        is BackEnd: {
+            type: Boolean, 
+            default: false
+        },
+        isFullStack: {
+            type: Boolean,
+            default: false
+        }
     }
 )
 
