@@ -20,11 +20,13 @@ const resolvers = {
                 .select('-__v -password')
                 .populate('projects');
         },
+        //get a single user by username
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password')
                 .populate('projects');
         },
+        //get all of a users projects
         projects: async (parent, { username }) => {
             const params = username ? { username } : {};
             return Project.find(params);
@@ -33,7 +35,7 @@ const resolvers = {
         project: async (parent, { _id }) => {
             return Project.findOne({ _id });
         },
-        //more queries here.  we need to search by tags
+        //more queries here.  we need to search by the booleans on each project
     },
     Mutation: {
         addUser: async (parent, args) => {
