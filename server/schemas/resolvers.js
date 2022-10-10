@@ -61,7 +61,16 @@ const resolvers = {
             return { token, user };
         },
         addProject: async (parent, args, context) => {
-            if (context.user) {
+            if  (context.user) {
+                // const project = new Project({
+                //     title: args.title,
+                //     description: args.description,
+                //     link: args.link,
+                //     isFrontEnd: args.isFrontEnd,
+                //     isBackEnd: args.isBackEnd,
+                //     isFullStack: args.isFullStack
+                // }).save();// MongoDB saving
+                
                 const project = await Project.create({ ...args, username: context.user.username });
 
                 await User.findByIdAndUpdate(

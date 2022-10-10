@@ -12,6 +12,7 @@ type Project{
     _id: ID
     title: String
     link: String
+    description: String
     isFrontEnd: Boolean
     isBackEnd: Boolean
     isFullStack: Boolean

@@ -1,7 +1,7 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-const { Project, User, Tag } = require('../models');
+const { Project, User } = require('../models');
 
 db.once('open', async () => {
     await Project.deleteMany({});
