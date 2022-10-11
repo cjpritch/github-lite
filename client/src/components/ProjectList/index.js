@@ -17,7 +17,11 @@ const ProjectList = ({ projects, title }) => {
                 <p className="card-header">{project.title}</p>
               </Link>
               <div className="card-body">
-                <p className="mb-0">About the project here</p>
+                <p className="mb-0">{project.link}</p>
+                <p className="mb-0">{project.description}</p>
+                <Link to={`/profile/${project.username}`}>
+                  <p className="mb-0">{project.username}</p>
+                </Link>
               </div>
             </div>
           </div>
