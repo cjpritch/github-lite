@@ -1,21 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import ProjectList from '../components/ProjectList';
-import TagList from '../components/TagList';
 import { QUERY_PROJECTS } from '../utils/queries';
 
 const Home = () => {
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.projects || [];
-
-  function filterProducts() {
-    if (!currentTag) {
-      return projects;
-    }
-
-    return projects.filter((project) => project.tag._id === currentTag);
-  }
 
   return (
     <main>
@@ -24,8 +15,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ProjectList projects={projects} title="" />
-            // <TagList/>
+            <ProjectList projects={projects} title="Most Recent Posts" />
           )}
         </div>
       </div>

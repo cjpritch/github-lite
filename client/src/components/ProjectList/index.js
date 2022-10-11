@@ -8,15 +8,20 @@ const ProjectList = ({ projects, title }) => {
 
   return (
     <div className="border col-sm-9">
-      <h3>Most Recent Posts</h3>
-      <div>
-        <div className="card mb-3">
-          <p className="card-header">{title}</p>
-          <div className="card-body">
-            <p className="mb-0">About the project here</p>
+      <h3>{title}</h3>
+      {projects &&
+        projects.map((project) => (
+          <div>
+            <div key={project._id} className="card mb-3">
+              <Link to={`/project/${project._id}`}>
+                <p className="card-header">{project.title}</p>
+              </Link>
+              <div className="card-body">
+                <p className="mb-0">About the project here</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        ))}
     </div>
   );
 };

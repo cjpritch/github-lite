@@ -12,14 +12,14 @@ const ProjectForm = () => {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, thoughts: [...me.project, addProject] } },
+          data: { me: { ...me, projects: [...me.project, addProject] } },
         });
       } catch (e) {
         console.warn('First project insertion by user!');
       }
 
       // update thought array's cache
-      const { project } = cache.readQuery({ query: QUERY_PROJECTS });
+      const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
       cache.writeQuery({
         query: QUERY_PROJECTS,
         data: { projects: [addProject, ...projects] },
@@ -33,7 +33,14 @@ const ProjectForm = () => {
     try {
       // add project to database
       await addProject({
-        variables: { projectText },
+        variables: {
+          title,
+          link,
+          description,
+          isFrontEnd,
+          isBackEnd,
+          isFullStack,
+        },
       });
     } catch (e) {
       console.error(e);
@@ -47,12 +54,14 @@ const ProjectForm = () => {
           <label for="projectTitle">Title</label>
           <input
             className="form-control"
+            value={title}
             placeholder="Enter your project's title"
           />
         </div>
         <div className="form-group">
           <label for="projectDescription">Description</label>
           <input
+            value={description}
             className="form-control"
             placeholder="Enter a description of your project"
           />
@@ -68,6 +77,7 @@ const ProjectForm = () => {
           <label for="projectLink">Link</label>
           <input
             className="form-control"
+            value={link}
             placeholder="Enter a link to your project or project's github"
           />
         </div>
