@@ -29,14 +29,19 @@ const resolvers = {
         //get all of a users projects
         projects: async (parent, { username }) => {
             const params = username ? { username } : {};
-            let frank = await User.findOne(params).populate('projects')
-            console.log(frank)
-            return frank;
+            let projectData = await User.findOne(params).populate('projects')
+            
+            return projectData;
         },
         //get project by id
         project: async (parent, { _id }) => {
             return Project.findOne({ _id });
         },
+
+        //get all of the projects on the site
+        allProjects: async () => {
+            return Project.find();
+        }
         //more queries here.  we need to search by the booleans on each project
     },
     Mutation: {
@@ -87,15 +92,16 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in');
         },
         
-        editProject: async(parent, { _id, ProjectInput }, context) =>{
-            if(context.user){
-                const updatedProject = await Project.findOneAndUpdate(
-                    {_id: args._id},
-                    { ProjectInput }
-                    );
-                    return updatedProject
-                }
-            },
+        // will work on this mutation after all the project search queries are done b/c that is the whole point of the project
+        // editProject: async(parent, { _id, ProjectInput }, context) =>{
+        //     if(context.user){
+        //         const updatedProject = await Project.findOneAndUpdate(
+        //             {_id: args._id},
+        //             { ProjectInput }
+        //             );
+        //             return updatedProject
+        //         }
+        //     },
             //more mutations can go here
 
     }
