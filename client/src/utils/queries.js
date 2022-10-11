@@ -6,32 +6,47 @@ export const QUERY_PROJECTS = gql`
       _id
       title
       link
-      tags {
-        _id
-        name
+      description
+      isFrontEnd
+      isBackEnd
+      isFullStack
       }
     }
   }
 `;
 
 export const QUERY_PROJECT = gql`
-  query project($id: ID!) {
+  query Project($id: ID!) {
     project(_id: $id) {
-      _id
       title
       link
-      tags {
-        _id
-        name
-      }
+      isFrontEnd
+      isBackEnd
+      isFullStack
     }
   }
 `;
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
+  query User($username: String!) {
     user(username: $username) {
+      username
       _id
+      projects {
+        _id
+        title
+        link
+        isBackEnd
+        isFrontEnd
+        isFullStack
+      }
+    }
+  }
+`;
+
+export const QUERY_USERS = gql`
+  query Users {
+    users {
       username
       email
       projectCount
@@ -39,10 +54,9 @@ export const QUERY_USER = gql`
         _id
         title
         link
-        tags {
-          _id: ID
-          name
-        }
+        isFullStack
+        isFrontEnd
+        isBackEnd
       }
     }
   }

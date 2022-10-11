@@ -1,0 +1,22 @@
+{
+  "name": "github-lite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjpritch/github-lite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjpritch/github-lite/issues"
+  },
+  "homepage": "https://github.com/cjpritch/github-lite#readme",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
