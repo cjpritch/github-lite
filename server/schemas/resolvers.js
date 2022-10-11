@@ -29,7 +29,9 @@ const resolvers = {
         //get all of a users projects
         projects: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Project.find(params);
+            let frank = await User.findOne(params).populate('projects')
+            console.log(frank)
+            return frank;
         },
         //get project by id
         project: async (parent, { _id }) => {
@@ -85,7 +87,16 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in');
         },
         
-        //more mutations can go here
+        editProject: async(parent, { _id, ProjectInput }, context) =>{
+            if(context.user){
+                const updatedProject = await Project.findOneAndUpdate(
+                    {_id: args._id},
+                    { ProjectInput }
+                    );
+                    return updatedProject
+                }
+            },
+            //more mutations can go here
 
     }
 };
