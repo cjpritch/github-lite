@@ -3,41 +3,77 @@
   background-color: rgb(34, 33, 66);
   font-family: sans-serif;
   color: #ffffff;
+display: flex;
 }
-.footer{
-  background-color:rgb(34, 33, 66)
+.navbar-toggler{
+  float: right;
 }
+.title{
+  padding-left: 5px;
+
+}
+
 .body{
   background-color:rgb(34, 33, 66);
   width: 100%;
+  font-family:Arial, Helvetica, sans-serif;
+}
+.header{
+  width:100%;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
 }
 .newprojectform{
   background-color: #ffffff;
   align-content: left;
   padding: 5px;
-  flex-grow: 1;
+  padding-left: 5px;
+  width: 30%;
  
 }
-.projectlist{
-  flex-grow: 2;
+.projectlistform{
+  flex-grow: 4;
+  width: 80%;
+  border-right: 0px;
+  border-top:solid 2px #ffffff;
+  border-bottom: solid 2px #ffffff;
+  border-left: solid 2px #ffffff;
+  border-right: solid 2px #ffffff;
+
 }
 .flexcontainer{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: left;
+
   
 }
 .container{
   align-content: left;
   margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+  border-right: 0px;
 }
 .btn{
   background-color: rgb(60, 169, 118);
+  margin:5px;
 }
 .form-group{
   padding: 5px;
 }
 .border{
   border:3px gray
+}
+.h3{
+  padding-top: 5px;
+}
+.footer{
+  padding: 5px;
+  background-color:rgb(34, 33, 66)
+}
+.hippoicon{
+  padding-left: 15px;
 }
