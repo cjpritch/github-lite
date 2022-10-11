@@ -27,13 +27,13 @@ type Query {
     me: User
     users: [User]
     user(username: String!): User
-    projects(username: String): [Project]
+    projects(username: String!): User
     project(_id: ID!): Project
     
 }
 
 type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addProject(title: String!, link: String!, description: String!, isFrontEnd: Boolean, isBackEnd: Boolean, isFullStack: Boolean): Project
 
