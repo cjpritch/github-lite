@@ -19,6 +19,9 @@ const ProjectList = ({ projects, title }) => {
               <div className="card-body">
                 <p className="mb-0">{project.link}</p>
                 <p className="mb-0">{project.description}</p>
+                <p className="mb-0">{project.isFrontEnd}</p>
+                <p className="mb-0">{project.isBackEnd}</p>
+                <p className="mb-0">{project.isFullStack}</p>
                 <Link to={`/profile/${project.username}`}>
                   <p className="mb-0">{project.username}</p>
                 </Link>

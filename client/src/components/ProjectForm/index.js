@@ -67,10 +67,10 @@ const ProjectForm = () => {
           />
         </div>
         <select class="form-select" aria-label="project-type">
-            <option selected>Select a Project Type</option>
-            <option value="1">Frontend</option>
-            <option value="2">Backend</option>
-            <option value="3">Full Stack</option>
+          <option selected>Select a Project Type</option>
+          <option value={isFrontEnd}>Frontend</option>
+          <option value={isBackEnd}>Backend</option>
+          <option value={isFullStack}>Full Stack</option>
         </select>
         <div className="form-group">
           <label for="projectLink">Link</label>
