@@ -66,19 +66,18 @@ const ProjectForm = () => {
             placeholder="Enter a description of your project"
           />
         </div>
-        <div className="form-group">
-          <label for="projectTags">Tags</label>
-          <input
-            className="form-control"
-            placeholder="Enter which languages/technologies you would like to tag"
-          />
-        </div>
+        <select class="form-select" aria-label="project-type">
+            <option selected>Select a Project Type</option>
+            <option value="1">Frontend</option>
+            <option value="2">Backend</option>
+            <option value="3">Full Stack</option>
+        </select>
         <div className="form-group">
           <label for="projectLink">Link</label>
           <input
             className="form-control"
             value={link}
-            placeholder="Enter a link to your project or project's github"
+            placeholder="Enter a link to your project"
           />
         </div>
         <button type="submit" className="btn btn-primary">
@@ -91,7 +90,7 @@ const ProjectForm = () => {
 
 export default ProjectForm;
 
-// For form: we need title, link, description, image, and tag
+// For form: we need title, link, description, and tag
 // get tag options from tag list
 
 // this will display on the user profile page

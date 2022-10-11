@@ -48,13 +48,15 @@
       <label for="projectDescription">Description</label>
       <input class="form-control" placeholder="Enter a description of your project">
     </div>
-    <div class="form-group">
-      <label for="projectTags">Tags</label>
-      <input class="form-control" placeholder="Enter which languages/technologies you would like to tag">
-    </div>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Select a Project Type</option>
+      <option value="1">Frontend</option>
+      <option value="2">Backend</option>
+      <option value="3">Full Stack</option>
+    </select>
     <div class="form-group">
       <label for="projectLink">Link</label>
-      <input class="form-control" placeholder="Enter a link to your project or project's github">
+      <input class="form-control" placeholder="Enter a link to your project">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
