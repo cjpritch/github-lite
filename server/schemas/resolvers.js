@@ -40,8 +40,6 @@ const resolvers = {
     allProjects: async () => {
       return Project.find();
     },
-
-    //more queries can go here.
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -68,15 +66,6 @@ const resolvers = {
     },
     addProject: async (parent, args, context) => {
       if (context.user) {
-        // const project = new Project({
-        //     title: args.title,
-        //     description: args.description,
-        //     link: args.link,
-        //     isFrontEnd: args.isFrontEnd,
-        //     isBackEnd: args.isBackEnd,
-        //     isFullStack: args.isFullStack
-        // }).save();// MongoDB saving
-
         const project = await Project.create({
           ...args,
           username: context.user.username,
@@ -93,24 +82,12 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in');
     },
-
-    editProject: async (parent, { _id, ProjectInput }, context) => {
-      if (context.user) {
-        const updatedProject = await Project.findOneAndUpdate(
-          { _id: _id },
-          { ProjectInput }
-        );
-        return updatedProject;
-      }
-    },
-
     deleteProject: async (parent, { _id }, context) => {
       if (context.user) {
         await Project.findByIdAndDelete({ _id: _id });
         return;
       }
     },
-    //more mutations can go here
   },
 };
 

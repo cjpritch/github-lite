@@ -10,7 +10,7 @@ const Contact = () => {
           <p class="card-header">Meet the Developer:</p>
           <div class="card-body">
             <p class="mb-0">
-              <p>{user.fullname}</p>
+              <p>{user.name}</p>
             </p>
             <p class="mb-0">
               <p>{user.email}</p>

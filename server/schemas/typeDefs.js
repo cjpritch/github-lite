@@ -52,8 +52,6 @@ const typeDefs = gql`
       isBackEnd: Boolean
       isFullStack: Boolean
     ): Project
-    # save this mutation until we can search done with all queries
-    editProject(_id: ID!, ProjectInput: ProjectInput!): Project
     deleteProject(_id: ID!): User
   }
 `;

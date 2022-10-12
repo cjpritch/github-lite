@@ -12,11 +12,11 @@ import { setContext } from '@apollo/client/link/context';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// import Home from './pages/Home';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Profile from './pages/Profile';
-// import SingleProject from './pages/SingleProject';
+import Profile from './pages/Profile';
+import SingleProject from './pages/SingleProject';
 import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
@@ -44,14 +44,14 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          {/* <Route path="/profile">
+          <Route path="/profile">
             <Route path=":username" element={<Profile />} />
-            <Route path="" element={<Profile />} /> */}
-          {/* </Route> */}
-          {/* <Route path="/project/:id" element={<SingleProject />} /> */}
+            <Route path="" element={<Profile />} />
+          </Route>
+          <Route path="/thought/:id" element={<SingleProject />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
         <Footer />

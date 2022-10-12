@@ -18,6 +18,7 @@ export const QUERY_PROJECT = gql`
     project(_id: $id) {
       title
       link
+      description
       isFrontEnd
       isBackEnd
       isFullStack
@@ -34,6 +35,7 @@ export const QUERY_USER = gql`
         _id
         title
         link
+        description
         isBackEnd
         isFrontEnd
         isFullStack
@@ -52,6 +54,7 @@ export const QUERY_USERS = gql`
         _id
         title
         link
+        description
         isFullStack
         isFrontEnd
         isBackEnd
@@ -61,21 +64,12 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_ME = gql`
-  {
-    me {
-      _id
-      username
-      email
-      projectCount
-      projects {
-        _id
-        title
-        link
-        tags {
-          _id
-          name
-        }
-      }
-    }
+{
+  me {
+    _id
+    username
+    name
+    email
   }
+}
 `;

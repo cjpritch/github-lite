@@ -10,7 +10,7 @@ import Contact from '../components/Contact';
 const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam, fullname: userParam },
+    variables: { username: userParam, name: userParam },
   });
 
   const user = data?.me || data?.user || {};
