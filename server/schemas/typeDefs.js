@@ -44,6 +44,8 @@ type Query {
     project(_id: ID!): Project
 
     allProjects: [Project]
+
+    
     
 }
 
@@ -55,7 +57,9 @@ type Mutation {
     addProject(title: String!, link: String!, description: String!, isFrontEnd: Boolean, isBackEnd: Boolean, isFullStack: Boolean): Project
 
     # save this mutation until we can search done with all queries
-    # editProject(_id: ID!, ProjectInput: ProjectInput!): Project
+    editProject(_id: ID!, ProjectInput: ProjectInput!): Project
+
+    deleteProject(_id: ID!): User
 
 }
 `;
