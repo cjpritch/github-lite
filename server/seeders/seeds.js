@@ -6,68 +6,56 @@ const { Project, User } = require('../models');
 db.once('open', async () => {
     await Project.deleteMany({});
     await User.deleteMany({});
+    // await Tag.deleteMany({});
 
     // create user data
-    const userData = [];
+    // const userData = [];
 
-    for (let i = 0; i < 50; i += 1) {
-        const username = faker.internet.userName();
-        const email = faker.internet.email(username);
-        const password = faker.internet.password();
+    // for (let i = 0; i < 50; i += 1) {
+    //     const username = faker.internet.userName();
+    //     const email = faker.internet.email(username);
+    //     const password = faker.internet.password();
 
-        userData.push({ username, email, password });
-    }
+    //     userData.push({ username, email, password });
+    // }
 
-    const createdUsers = await User.collection.insertMany(userData);
+    // const createdUsers = await User.collection.insertMany(userData);
 
 
     // create Projects
-    let createdProjects = [];
+    // let createdProjects = [];
 
-    for (let i = 0; i < 100; i += 1) {
-        const title = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-        const description = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-        const link = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    // for (let i = 0; i < 100; i += 1) {
+    //     const title = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    //     const description = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    //     const link = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-        const { username, _id: userId } = createdUsers.ops[randomUserIndex];
+    //     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    //     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-        const createdProject = await Project.create({ title, description, link, username });
+    //     const createdProject = await Project.create({ title, description, link, username });
 
-        const updatedUser = await User.updateOne(
-            { _id: userId },
-            { $push: { Projects: createdProject._id } }
-        );
+    //     const updatedUser = await User.updateOne(
+    //         { _id: userId },
+    //         { $push: { Projects: createdProject._id } }
+    //     );
 
-        createdProjects.push(createdProject);
-    }
+    //     createdProjects.push(createdProject);
+    // }
 
 
 
     // create tags
-    const sampleTags = ['MERN', 'Node/Express', 'front-end'];
-    // have list of tags to choose from, following logic will then be changed to choose tags randomly and then apply them to the projects created above
-
-    for (let i = 0; i < 100; i += 1) {
-        const name = sampleTags[Math.round(Math.random() * 2) + 1];
+    // const sampleTags = ["MERN", "Node/Express", "front-end", "REACT"];
+    // const tagsData = [];
+    
+    // for (let i = 0; i < 4; i += 1) {
+    //     const name = sampleTags[i];
         
-        const randomProjectIndex = Math.floor(Math.random() * createdProjects.length);
-        const { title }  = createdProjects[randomProjectIndex];
-        
-        
-console.log(await Project.findOne({title: title}))
-        console.log(title)
-
-        await Project.updateOne(
-            { title:  title  },
-            { $addToSet: { tags: name  } },  { safe: true, upsert: true }, (err, data) => {
-                if (err){
-                    console.log(err);
-                }
-                console.log(data)
-                } 
-        );
-    }
+    //     tagsData.push( {name} );
+       
+    // }
+    // const createdTags = await Tag.collection.insertMany(tagsData);
 
     console.log('all done!');
     process.exit(0);
