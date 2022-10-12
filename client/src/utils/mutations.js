@@ -14,18 +14,28 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-mutation addUser($username: String!, $name: String!, $password: String!, $email: String!){
-  addUser(username: $username , name: $name, password: $password , email: $email) {
-    token
-    user{
-    _id
-    username
-    email
+  mutation addUser(
+    $username: String!
+    $name: String!
+    $password: String!
+    $email: String!
+  ) {
+    addUser(
+      username: $username
+      name: $name
+      password: $password
+      email: $email
+    ) {
+      token
+      user {
+        _id
+        username
+        email
+      }
     }
   }
 `;
 
-// we may need to add description into the typedefs schema for project
 export const ADD_PROJECT = gql`
   mutation addProject(
     $title: String!
@@ -49,6 +59,17 @@ export const ADD_PROJECT = gql`
       isBackEnd
       isFrontEnd
       isFullStack
+    }
+  }
+`;
+
+export const DELETE_PROJECT = gql`
+  mutation DeleteProject($id: ID!) {
+    deleteProject(_id: $id) {
+      projectCount
+      projects {
+        title
+      }
     }
   }
 `;

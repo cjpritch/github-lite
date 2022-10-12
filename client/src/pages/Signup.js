@@ -8,6 +8,7 @@ const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
     email: '',
+    name: '',
     password: '',
   });
   const [addUser, { error }] = useMutation(ADD_USER);
@@ -49,6 +50,17 @@ const Signup = () => {
             type="username"
             className="form-control"
             value={formState.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label for="signupUsername" className="form-label">
+            Full name
+          </label>
+          <input
+            type="username"
+            className="form-control"
+            value={formState.name}
             onChange={handleChange}
           />
         </div>

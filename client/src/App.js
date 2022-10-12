@@ -44,8 +44,14 @@ function App() {
       <Router>
         <Header />
         <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/profile">
+            <Route path=":username" element={<Profile />} />
+            <Route path="" element={<Profile />} /> */}
+          {/* </Route> */}
+          {/* <Route path="/project/:id" element={<SingleProject />} /> */}
           <Route path="*" element={<NoMatch />} />
         </Routes>
         <Footer />

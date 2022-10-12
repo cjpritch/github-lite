@@ -27,13 +27,21 @@ const resolvers = {
     //get all of a users projects
     projects: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Project.find(params);
+      let projectData = await User.findOne(params).populate('projects');
+
+      return projectData;
     },
     //get project by id
     project: async (parent, { _id }) => {
       return Project.findOne({ _id });
     },
-    //more queries here.  we need to search by the booleans on each project
+
+    //get all of the projects on the site
+    allProjects: async () => {
+      return Project.find();
+    },
+
+    //more queries can go here.
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -86,6 +94,22 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in');
     },
 
+    editProject: async (parent, { _id, ProjectInput }, context) => {
+      if (context.user) {
+        const updatedProject = await Project.findOneAndUpdate(
+          { _id: _id },
+          { ProjectInput }
+        );
+        return updatedProject;
+      }
+    },
+
+    deleteProject: async (parent, { _id }, context) => {
+      if (context.user) {
+        await Project.findByIdAndDelete({ _id: _id });
+        return;
+      }
+    },
     //more mutations can go here
   },
 };
