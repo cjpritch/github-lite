@@ -18,7 +18,7 @@ const ProjectForm = () => {
         console.warn('First project insertion by user!');
       }
 
-      // update thought array's cache
+      // update project array's cache
       const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
       cache.writeQuery({
         query: QUERY_PROJECTS,

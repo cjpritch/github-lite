@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-// some of the functionality may change depending on if we use react bootstrap or not for the form
+// only need email and password to login
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);

@@ -7,7 +7,6 @@ export const LOGIN = gql`
       user {
         _id
         username
-        email
       }
     }
   }
@@ -16,21 +15,20 @@ export const LOGIN = gql`
 export const ADD_USER = gql`
   mutation addUser(
     $username: String!
-    $name: String!
-    $password: String!
+    $fullname: String!
     $email: String!
+    $password: String!
   ) {
     addUser(
       username: $username
-      name: $name
-      password: $password
+      fullname: $fullname
       email: $email
+      password: $password
     ) {
       token
       user {
         _id
         username
-        email
       }
     }
   }
@@ -53,9 +51,10 @@ export const ADD_PROJECT = gql`
       isBackEnd: $isBackEnd
       isFullStack: $isFullStack
     ) {
+      _id
       title
       link
-      _id
+      description
       isBackEnd
       isFrontEnd
       isFullStack

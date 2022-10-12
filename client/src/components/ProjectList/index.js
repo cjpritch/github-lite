@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// display all projects in a list
 const ProjectList = ({ projects, title }) => {
   if (!projects.length) {
     return <h3>No Projects Posted Yet</h3>;

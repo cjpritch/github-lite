@@ -27,18 +27,11 @@ const resolvers = {
     //get all of a users projects
     projects: async (parent, { username }) => {
       const params = username ? { username } : {};
-      let projectData = await User.findOne(params).populate('projects');
-
-      return projectData;
+      return Project.find(params).sort({ createdAt: -1 });
     },
     //get project by id
     project: async (parent, { _id }) => {
       return Project.findOne({ _id });
-    },
-
-    //get all of the projects on the site
-    allProjects: async () => {
-      return Project.find();
     },
   },
   Mutation: {

@@ -1,8 +1,9 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_PROJECTS = gql`
-  query AllProjects {
-    allProjects {
+  query projects($username: String) {
+    projects(username: $username) {
+      _id
       title
       link
       description
@@ -14,8 +15,9 @@ export const QUERY_PROJECTS = gql`
 `;
 
 export const QUERY_PROJECT = gql`
-  query Project($id: ID!) {
+  query project($id: ID!) {
     project(_id: $id) {
+      _id
       title
       link
       description
@@ -29,8 +31,10 @@ export const QUERY_PROJECT = gql`
 export const QUERY_USER = gql`
   query User($username: String!) {
     user(username: $username) {
-      username
       _id
+      username
+      fullname
+      email
       projects {
         _id
         title
@@ -48,6 +52,7 @@ export const QUERY_USERS = gql`
   query Users {
     users {
       username
+      fullname
       email
       projectCount
       projects {
@@ -68,7 +73,7 @@ export const QUERY_ME = gql`
   me {
     _id
     username
-    name
+    fullname
     email
   }
 }

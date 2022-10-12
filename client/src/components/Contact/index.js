@@ -1,5 +1,6 @@
 import React from 'react';
 
+// returns a user's contact info: fullname and email
 const Contact = () => {
   const user = data?.me || data?.user || {};
 
@@ -10,7 +11,7 @@ const Contact = () => {
           <p class="card-header">Meet the Developer:</p>
           <div class="card-body">
             <p class="mb-0">
-              <p>{user.name}</p>
+              <p>{user.fullname}</p>
             </p>
             <p class="mb-0">
               <p>{user.email}</p>

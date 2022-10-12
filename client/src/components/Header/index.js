@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
+// display at top of page with nav bar that changes if user is logged in
+// if logged out: display login and signup
+// if logged in: display profile and logout
 const Header = () => {
   // remove the token from localStorage
   // then refresh the application by taking the user back to the homepage
@@ -68,7 +71,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// display at top of page with nav bar that changes if user is logged in
-// if logged out: display login and signup
-// if logged in: display profile and logout

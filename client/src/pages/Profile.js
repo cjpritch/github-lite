@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import ProjectForm from '../components/ProjectForm';
@@ -10,7 +10,7 @@ import Contact from '../components/Contact';
 const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam, name: userParam },
+    variables: { username: userParam, fullname: userParam },
   });
 
   const user = data?.me || data?.user || {};

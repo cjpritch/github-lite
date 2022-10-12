@@ -3,6 +3,7 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String
+    fullname: String
     email: String
     projectCount: Int
     projects: [Project]
@@ -32,14 +33,13 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    projects(username: String!): User
+    projects(username: String!): [Project]
     project(_id: ID!): Project
-    allProjects: [Project]
   }
   type Mutation {
     addUser(
       username: String!
-      name: String!
+      fullname: String!
       email: String!
       password: String!
     ): Auth

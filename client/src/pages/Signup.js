@@ -3,12 +3,12 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-// some of the functionality may change depending on if we use react bootstrap or not for the form
+// need a username, a fullname for contact info, an email, and a password
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
+    fullname: '',
     email: '',
-    name: '',
     password: '',
   });
   const [addUser, { error }] = useMutation(ADD_USER);
@@ -60,7 +60,7 @@ const Signup = () => {
           <input
             type="username"
             className="form-control"
-            value={formState.name}
+            value={formState.fullname}
             onChange={handleChange}
           />
         </div>

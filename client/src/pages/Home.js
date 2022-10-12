@@ -1,13 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
+import { QUERY_PROJECTS, QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
 import ProjectList from '../components/ProjectList';
 import ProjectForm from '../components/ProjectForm';
-import { QUERY_PROJECTS } from '../utils/queries';
-import Auth from '../utils/auth';
 
 const Home = () => {
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_PROJECTS);
+  const { data: userData } = useQuery(QUERY_ME);
   const projects = data?.projects || [];
 
   const loggedIn = Auth.loggedIn();
