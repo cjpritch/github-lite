@@ -14,8 +14,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-mutation addUser($username: String!, $name: String!, $password: String!, $email: String!){
-  addUser(username: $username , name: $name, password: $password , email: $email) {
+mutation addUser($username: String!, $name: String!, $email: String!, $password: String!){
+  addUser(username: $username , name: $name, email: $email, password: $password) {
     token
     user{
     _id
@@ -23,6 +23,7 @@ mutation addUser($username: String!, $name: String!, $password: String!, $email:
     email
     }
   }
+}
 `;
 
 // we may need to add description into the typedefs schema for project
