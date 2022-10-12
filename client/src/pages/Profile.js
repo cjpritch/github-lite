@@ -39,7 +39,7 @@ const Profile = () => {
         projects={user.thoughts}
         title={`${user.username}'s projects!`}
       />
-      {userParam && <Contact />}
+      {/* {userParam && <Contact />} */}
       <div>{!userParam && <ProjectForm />}</div>
     </main>
   );

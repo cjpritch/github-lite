@@ -29,7 +29,7 @@ export const QUERY_PROJECT = gql`
 `;
 
 export const QUERY_USER = gql`
-  query User($username: String!) {
+  query user($username: String!) {
     user(username: $username) {
       _id
       username
@@ -49,7 +49,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_USERS = gql`
-  query Users {
+  query users {
     users {
       username
       fullname
