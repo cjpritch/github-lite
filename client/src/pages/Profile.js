@@ -5,14 +5,13 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import ProjectForm from '../components/ProjectForm';
 import ProjectList from '../components/ProjectList';
-import Contact from '../components/Contact';
 
 const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam, fullname: userParam },
   });
-
+  const loggedIn = Auth.loggedIn();
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is the logged-in user's
@@ -36,9 +35,12 @@ const Profile = () => {
   return (
     <main>
       <ProjectList
-        projects={user.thoughts}
+        projects={user.projects}
         title={`${user.username}'s projects!`}
       />
+      <div>          <h2>Contact:</h2>
+          <p>{user.fullname}</p>
+          <p>{user.email}</p></div>
       <div>{!userParam && <ProjectForm />}</div>
     </main>
   );
