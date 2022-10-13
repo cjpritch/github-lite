@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const UserSchema = new Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -26,10 +26,16 @@ const UserSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    projects: [
+    projectss: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Project',
+      },
+    ],
+    contacts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
       },
     ],
   },
@@ -40,7 +46,8 @@ const UserSchema = new Schema(
   }
 );
 
-UserSchema.pre('save', async function (next) {
+// set up pre-save middleware to create password
+userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -49,15 +56,15 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-UserSchema.methods.isCorrectPassword = async function (password) {
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-//Virtual to return project count, maybe not needed, but added b/c of line 32
-UserSchema.virtual('projectCount').get(function () {
-  return this.projects.length;
+userSchema.virtual('contactCount').get(function () {
+  return this.contacts.length;
 });
 
-const User = model('User', UserSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
