@@ -19,7 +19,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg border">
         <div className="container-fluid">
           <Link to="/">
-            <h1 className="navbar-brand">GitHub Lite</h1>
+            <h1 className="navbar-brand text-white">GitHub Lite<i class="fa-solid fa-hippo"></i></h1>
           </Link>
           <button
             className="navbar-toggler"
@@ -38,11 +38,11 @@ const Header = () => {
                 <>
                   <li className="nav-item">
                     <Link to="/profile">
-                      <div className="nav-link">Profile</div>
+                      <div className="nav-link text-white">Profile</div>
                     </Link>
                   </li>
                   <li>
-                    <a href="/" onClick={logout}>
+                    <a href="/" onClick={logout} className="nav-link text-white">
                       Logout
                     </a>
                   </li>
@@ -51,13 +51,13 @@ const Header = () => {
                 <>
                   <li className="nav-item">
                     <Link to="/login">
-                      <div className="nav-link">Login</div>
+                      <div className="nav-link text-white">Login</div>
                     </Link>
                   </li>
 
                   <li className="nav-item">
                     <Link to="/signup">
-                      <div className="nav-link">Signup</div>
+                      <div className="nav-link text-white">Signup</div>
                     </Link>
                   </li>
                 </>

@@ -43,44 +43,52 @@ const Signup = () => {
     <main>
       <form onSubmit={handleFormSubmit}>
         <div className="mb-3">
-          <label for="signupUsername" className="form-label">
+          <label for="signupUsername" className="form-label text-white">
             Username
           </label>
           <input
+            name="username"
             type="username"
+            id="username"
             className="form-control"
             value={formState.username}
             onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label for="signupUsername" className="form-label">
+          <label for="signupUsername" className="form-label text-white">
             Full name
           </label>
           <input
-            type="username"
+           name="fullname"
+           type="fullname"
+           id="fullname"
             className="form-control"
             value={formState.fullname}
             onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label for="signupEmail" className="form-label">
+          <label for="signupEmail" className="form-label text-white">
             Email address
           </label>
           <input
+            name="email"
             type="email"
+            id="email"
             className="form-control"
             value={formState.email}
             onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label for="signupPassword" className="form-label">
+          <label for="signupPassword" className="form-label text-white">
             Password
           </label>
           <input
+            name="password"
             type="password"
+            id="password"
             className="form-control"
             value={formState.password}
             onChange={handleChange}

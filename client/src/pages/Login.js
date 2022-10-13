@@ -39,24 +39,37 @@ const Login = (props) => {
         <div className="mb-3">
           <label
             for="loginEmail"
-            className="form-label"
-            value={formState.email}
-            onChange={handleChange}
+            name="email"
+            type="email"
+            id="email"
+            className="form-label text-white"
           >
             Email address
           </label>
-          <input type="email" className="form-control" />
+          <input
+          type="email"
+          name="email"
+          type="email"
+          id="email"
+          className="form-control"
+          value={formState.email}
+          onChange={handleChange} />
         </div>
         <div className="mb-3">
           <label
             for="loginPassword"
-            className="form-label"
-            value={formState.password}
-            onChange={handleChange}
+            className="form-label text-white"
           >
             Password
           </label>
-          <input type="password" className="form-control" />
+          <input
+          type="password"
+          name="password"
+          type="password"
+          id="password"
+          className="form-control" 
+          value={formState.password}
+          onChange={handleChange}/>
         </div>
         <button type="submit" className="btn">
           Login
