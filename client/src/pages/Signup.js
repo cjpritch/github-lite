@@ -3,10 +3,11 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-// some of the functionality may change depending on if we use react bootstrap or not for the form
+// need a username, a fullname for contact info, an email, and a password
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
+    fullname: '',
     email: '',
     password: '',
   });
@@ -42,33 +43,52 @@ const Signup = () => {
     <main>
       <form onSubmit={handleFormSubmit}>
         <div className="mb-3">
-          <label for="signupUsername" className="form-label">
+          <label for="signupUsername" className="form-label text-white">
             Username
           </label>
           <input
+            name="username"
             type="username"
+            id="username"
             className="form-control"
             value={formState.username}
             onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label for="signupEmail" className="form-label">
+          <label for="signupUsername" className="form-label text-white">
+            Full name
+          </label>
+          <input
+           name="fullname"
+           type="fullname"
+           id="fullname"
+            className="form-control"
+            value={formState.fullname}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label for="signupEmail" className="form-label text-white">
             Email address
           </label>
           <input
+            name="email"
             type="email"
+            id="email"
             className="form-control"
             value={formState.email}
             onChange={handleChange}
           />
         </div>
         <div className="mb-3">
-          <label for="signupPassword" className="form-label">
+          <label for="signupPassword" className="form-label text-white">
             Password
           </label>
           <input
+            name="password"
             type="password"
+            id="password"
             className="form-control"
             value={formState.password}
             onChange={handleChange}

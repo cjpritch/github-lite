@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const ProjectSchema = new Schema({
   title: {
@@ -9,22 +10,23 @@ const ProjectSchema = new Schema({
     type: String,
     required: true,
   },
+  tag: {
+    type: String,
+    required: true,
+  },
   link: {
     type: String,
     required: true,
     unique: true,
   },
-  isFrontEnd: {
-    type: Boolean,
-    default: false,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
-  isBackEnd: {
-    type: Boolean,
-    default: false,
-  },
-  isFullStack: {
-    type: Boolean,
-    default: false,
+  username: {
+    type: String,
+    required: true,
   },
 });
 

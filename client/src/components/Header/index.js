@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
+// display at top of page with nav bar that changes if user is logged in
+// if logged out: display login and signup
+// if logged in: display profile and logout
 const Header = () => {
   // remove the token from localStorage
   // then refresh the application by taking the user back to the homepage
@@ -12,63 +18,50 @@ const Header = () => {
 
   // user has to log in to gain access to user-based features in the nav bar
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg border">
-        <div className="container-fluid">
+    <header className="mb-4 py-2 flex-row align-center">
+      <Navbar expand="lg">
+        <Container>
+        <Navbar.Brand>
           <Link to="/">
-            <h1 className="navbar-brand">GitHub Lite</h1>
+          <h1 className="text-white">GitHub Lite<i class="fa-solid fa-hippo"></i></h1>
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
               {Auth.loggedIn() ? (
                 <>
-                  <li className="nav-item">
-                    <Link to="/profile">
-                      <p className="nav-link">Profile</p>
-                    </Link>
-                  </li>
-                  <li>
-                    <a href="/" onClick={logout}>
-                      Logout
-                    </a>
-                  </li>
+                <Nav.Link>
+                  <Link to="/profile">
+                    <div className="nav-link text-white">Profile</div>
+                  </Link>
+                  </Nav.Link>
+                 
+                  <Nav.Link>
+                    <a href="/" onClick={logout} className="nav-link text-white logout">Logout</a>
+                  </Nav.Link>
                 </>
               ) : (
                 <>
-                  <li className="nav-item">
+                  <Nav.Link>
                     <Link to="/login">
-                      <p className="nav-link">Login</p>
+                      <div className="nav-link text-white">Login</div>
                     </Link>
-                  </li>
+                  </Nav.Link>
 
-                  <li className="nav-item">
+                  <Nav.Link>
                     <Link to="/signup">
-                      <p className="nav-link">Signup</p>
+                      <div className="nav-link text-white">Signup</div>
                     </Link>
-                  </li>
+                  </Nav.Link>
                 </>
               )}
-            </ul>
-          </div>
-        </div>
-      </nav>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     </header>
   );
 };
 
 export default Header;
-
-// display at top of page with nav bar that changes if user is logged in
-// if logged out: display login and signup
-// if logged in: display profile and logout

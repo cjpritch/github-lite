@@ -1,81 +1,78 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_PROJECTS = gql`
-  query AllProjects {
-    allProjects {
+  query projects($username: String) {
+    projects(username: $username) {
+      _id
       title
-      link
       description
-      isFrontEnd
-      isBackEnd
-      isFullStack
+      tag
+      link
+      createdAt
+      username
     }
   }
 `;
 
 export const QUERY_PROJECT = gql`
-  query Project($id: ID!) {
+  query project($id: ID!) {
     project(_id: $id) {
+      _id
       title
+      description
+      tag
       link
-      isFrontEnd
-      isBackEnd
-      isFullStack
+      createdAt
+      username
     }
   }
 `;
 
 export const QUERY_USER = gql`
-  query User($username: String!) {
+  query user($username: String!) {
     user(username: $username) {
-      username
       _id
+      username
+      fullname
+      email
       projects {
         _id
         title
+        description
+        tag
         link
-        isBackEnd
-        isFrontEnd
-        isFullStack
+        createdAt
       }
     }
   }
 `;
 
 export const QUERY_USERS = gql`
-  query Users {
+  query users {
     users {
       username
+      fullname
       email
       projectCount
       projects {
         _id
         title
+        description
+        tag
         link
-        isFullStack
-        isFrontEnd
-        isBackEnd
+        createdAt
       }
     }
   }
 `;
 
 export const QUERY_ME = gql`
-  {
-    me {
-      _id
-      username
-      email
-      projectCount
-      projects {
-        _id
-        title
-        link
-        tags {
-          _id
-          name
-        }
-      }
-    }
+{
+  me {
+    _id
+    username
+    fullname
+    email
   }
+}
 `;
