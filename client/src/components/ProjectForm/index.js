@@ -19,7 +19,7 @@ const ProjectForm = () => {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, projects: [...me.project, addProject] } },
+          data: { me: { ...me, projects: [...me.projects, addProject] } },
         });
       } catch (e) {
         console.warn('First project insertion by user!');
@@ -54,12 +54,7 @@ const ProjectForm = () => {
       });
 
       // clear form value
-      setFormState({ 
-      title: '',
-      description: '',
-      tag: '',
-      link: '',
-     });
+      setFormState({ title: '', description: '', tag: '', link: '' });
     } catch (e) {
       console.error(e);
     }
@@ -72,47 +67,48 @@ const ProjectForm = () => {
           <label for="projectTitle" className="text-white">Title</label>
           <input
             className="form-control"
+            placeholder="Enter your project's title"
             name="title"
             type="title"
             id="title"
             value={formState.title}
-            placeholder="Enter your project's title"
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
           <label for="projectDescription" className="text-white">Description</label>
           <input
-            value={formState.description}
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Enter a description of your project"
             name="description"
             type="description"
             id="description"
-            placeholder="Enter a description of your project"
+            value={formState.description}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
           <label for="projectTag" className="text-white">List the technologies you used</label>
           <input
-            value={formState.tag}
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Enter a your project's technologies"
             name="tag"
             type="tag"
             id="tag"
             placeholder="Enter a your project's technologies"
+            value={formState.tag}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
           <label for="projectLink" className="text-white">Link</label>
           <input
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Enter a link to your project"
             name="link"
             type="link"
             id="link"
             value={formState.link}
-            placeholder="Enter a link to your project"
             onChange={handleChange}
           />
         </div>
