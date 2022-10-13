@@ -4,7 +4,7 @@
 
 - [Description](#description)
 - [Installation](#installation)
-- [Technologies Used](#technologiesused)
+- [Technologies Used](#technologies)
 - [Contributers](#contributers)
 - [Website](#website)
 
@@ -16,7 +16,7 @@ Github Lite is a web application designed for developers in order to showcase th
 Just go to the website, create an account, and start posting!
 
 
-## Technologies Used
+## Technologies 
 - Html
 - CSS/Bootstrap
 - Javascript
