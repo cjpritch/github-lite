@@ -25,10 +25,8 @@ const SingleProject = () => {
               <p class="card-header">{project.title}</p>
               <div class="card-body">
                 <p class="mb-0">{project.description}</p>
+                <p class="mb-0">{project.tag}</p>
                 <p class="mb-0">{project.link}</p>
-                <p className="mb-0">{project.isFrontEnd}</p>
-                <p className="mb-0">{project.isBackEnd}</p>
-                <p className="mb-0">{project.isFullStack}</p>
               </div>
             </div>
         </div>

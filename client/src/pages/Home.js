@@ -14,7 +14,6 @@ const Home = () => {
   const loggedIn = Auth.loggedIn();
 
   return (
-    <main>
       <div className="container">
       {loggedIn && (
           <div className="row">
@@ -29,7 +28,6 @@ const Home = () => {
           )}
         </div>
       </div>
-    </main>
   );
 };
 

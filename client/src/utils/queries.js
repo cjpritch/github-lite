@@ -5,11 +5,11 @@ export const QUERY_PROJECTS = gql`
     projects(username: $username) {
       _id
       title
-      link
       description
-      isFrontEnd
-      isBackEnd
-      isFullStack
+      tag
+      link
+      createdAt
+      username
     }
   }
 `;
@@ -19,11 +19,11 @@ export const QUERY_PROJECT = gql`
     project(_id: $id) {
       _id
       title
-      link
       description
-      isFrontEnd
-      isBackEnd
-      isFullStack
+      tag
+      link
+      createdAt
+      username
     }
   }
 `;
@@ -38,11 +38,10 @@ export const QUERY_USER = gql`
       projects {
         _id
         title
-        link
         description
-        isBackEnd
-        isFrontEnd
-        isFullStack
+        tag
+        link
+        createdAt
       }
     }
   }
@@ -58,11 +57,10 @@ export const QUERY_USERS = gql`
       projects {
         _id
         title
-        link
         description
-        isFullStack
-        isFrontEnd
-        isBackEnd
+        tag
+        link
+        createdAt
       }
     }
   }

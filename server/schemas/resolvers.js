@@ -27,7 +27,8 @@ const resolvers = {
     //get all of a users projects
     projects: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Project.find(params).sort({ createdAt: -1 });
+      let projectData = await User.findOne(params).populate('projects').sort({ createdAt: -1 })
+      return projectData;;
     },
     //get project by id
     project: async (parent, { _id }) => {

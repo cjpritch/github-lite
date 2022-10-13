@@ -37,27 +37,23 @@ export const ADD_USER = gql`
 export const ADD_PROJECT = gql`
   mutation addProject(
     $title: String!
-    $link: String!
     $description: String!
-    $isFrontEnd: Boolean
-    $isBackEnd: Boolean
-    $isFullStack: Boolean
+    $tag: String!
+    $link: String!
   ) {
     addProject(
       title: $title
-      link: $link
       description: $description
-      isFrontEnd: $isFrontEnd
-      isBackEnd: $isBackEnd
-      isFullStack: $isFullStack
+      tag: $tag
+      link: $link
     ) {
       _id
       title
-      link
       description
-      isBackEnd
-      isFrontEnd
-      isFullStack
+      tag
+      link
+      createdAt
+      username
     }
   }
 `;

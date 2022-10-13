@@ -11,11 +11,10 @@ const typeDefs = gql`
   type Project {
     _id: ID
     title: String
-    link: String
     description: String
-    isFrontEnd: Boolean
-    isBackEnd: Boolean
-    isFullStack: Boolean
+    tag: String
+    link: String
+    createdAt: String
   }
   type Auth {
     token: ID!
@@ -23,11 +22,9 @@ const typeDefs = gql`
   }
   input ProjectInput {
     title: String
-    link: String
     description: String
-    isFrontEnd: Boolean
-    isBackEnd: Boolean
-    isFullStack: Boolean
+    tag: String
+    link: String
   }
   type Query {
     me: User
@@ -46,11 +43,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addProject(
       title: String!
-      link: String!
       description: String!
-      isFrontEnd: Boolean
-      isBackEnd: Boolean
-      isFullStack: Boolean
+      tag: String!
+      link: String!
     ): Project
     deleteProject(_id: ID!): User
   }

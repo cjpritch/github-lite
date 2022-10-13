@@ -7,9 +7,8 @@ const ProjectForm = () => {
   const [formState, setFormState] = useState({
     title: '',
     description: '',
-    isFrontEnd: '',
-    isBackEnd: '',
-    isFullStack: '',
+    tag: '',
+    link: '',
   });
 
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
@@ -32,6 +31,7 @@ const ProjectForm = () => {
         query: QUERY_PROJECTS,
         data: { projects: [addProject, ...projects] },
       });
+      
     },
   });
 
@@ -54,11 +54,12 @@ const ProjectForm = () => {
       });
 
       // clear form value
-      setFormState({ title: '',
+      setFormState({ 
+      title: '',
       description: '',
-      isFrontEnd: '',
-      isBackEnd: '',
-      isFullStack: '', });
+      tag: '',
+      link: '',
+     });
     } catch (e) {
       console.error(e);
     }
@@ -68,33 +69,48 @@ const ProjectForm = () => {
     <div className="col-sm-3">
       <form className="border" onSubmit={handleFormSubmit}>
         <div className="form-group">
-          <label for="projectTitle">Title</label>
+          <label for="projectTitle" className="text-white">Title</label>
           <input
             className="form-control"
+            name="title"
+            type="title"
+            id="title"
             value={formState.title}
             placeholder="Enter your project's title"
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label for="projectDescription">Description</label>
+          <label for="projectDescription" className="text-white">Description</label>
           <input
             value={formState.description}
             className="form-control"
+            name="description"
+            type="description"
+            id="description"
             placeholder="Enter a description of your project"
             onChange={handleChange}
           />
         </div>
-        <select class="form-select" aria-label="project-type">
-          <option selected>Select a Project Type</option>
-          <option value={formState.isFrontEnd} onChange={handleChange}>Frontend</option>
-          <option value={formState.isBackEnd} onChange={handleChange}>Backend</option>
-          <option value={formState.isFullStack} onChange={handleChange}>Full Stack</option>
-        </select>
         <div className="form-group">
-          <label for="projectLink">Link</label>
+          <label for="projectTag" className="text-white">List the technologies you used</label>
+          <input
+            value={formState.tag}
+            className="form-control"
+            name="tag"
+            type="tag"
+            id="tag"
+            placeholder="Enter a your project's technologies"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label for="projectLink" className="text-white">Link</label>
           <input
             className="form-control"
+            name="link"
+            type="link"
+            id="link"
             value={formState.link}
             placeholder="Enter a link to your project"
             onChange={handleChange}

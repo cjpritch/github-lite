@@ -48,9 +48,9 @@ const Login = (props) => {
           </label>
           <input
           type="email"
-          name="email"
-          type="email"
-          id="email"
+           name="email"
+                type="email"
+                id="email"
           className="form-control"
           value={formState.email}
           onChange={handleChange} />
