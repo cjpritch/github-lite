@@ -10,7 +10,6 @@ const ProjectForm = () => {
     tag: '',
     link: '',
   });
-
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
       // could potentially not exist yet, so wrap in a try/catch
@@ -19,21 +18,26 @@ const ProjectForm = () => {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, projects: [...me.projects, addProject] } },
-        });
-      } catch (e) {
-        console.warn('First project insertion by user!');
-      }
-
-      // update project array's cache
-      const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
+          data: { me: { ...me, projects: me.projects?[...me.projects, addProject]:[addProject] } },
+        });console.log("Put something in cache")
+          // update project array's cache
+      console.log("starting to populate")
+      const { projects } = cache.readQuery({ query: (QUERY_PROJECTS, {variables: {username: me.username}}) });
+      console.log(projects)
       cache.writeQuery({
         query: QUERY_PROJECTS,
         data: { projects: [addProject, ...projects] },
       });
+      } catch (e) {
+        console.warn('Error');
+      }
+
+    
       
     },
   });
+
+  //const [addProject, { error }] = useMutation(ADD_PROJECT);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -50,13 +54,12 @@ const ProjectForm = () => {
     try {
       // add project to database
       await addProject({
-        variables: { ...formState },
+        variables: {...formState},
       });
-
       // clear form value
       setFormState({ title: '', description: '', tag: '', link: '' });
     } catch (e) {
-      console.error(e);
+      console.error(error);
     }
   };
 
@@ -95,7 +98,6 @@ const ProjectForm = () => {
             name="tag"
             type="tag"
             id="tag"
-            placeholder="Enter a your project's technologies"
             value={formState.tag}
             onChange={handleChange}
           />

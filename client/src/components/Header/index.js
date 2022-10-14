@@ -23,7 +23,7 @@ const Header = () => {
         <Container>
         <Navbar.Brand>
           <Link to="/">
-          <h1 className="text-white">GitHub Lite<i class="fa-solid fa-hippo"></i></h1>
+          <h1 className="text-white">GitHub Lite<i className="fa-solid fa-hippo"></i></h1>
           </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -37,8 +37,8 @@ const Header = () => {
                   </Link>
                   </Nav.Link>
                  
-                  <Nav.Link>
-                    <a href="/" onClick={logout} className="nav-link text-white logout">Logout</a>
+                  <Nav.Link href="/" onClick={logout} className="nav-link text-white logout">
+                   Logout
                   </Nav.Link>
                 </>
               ) : (

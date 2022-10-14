@@ -5,14 +5,14 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
+     
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user })
+        const userData = await User.findOne({ email: context.user.email })
           .select('-_v -password')
           .populate('projects');
 
         return userData;
-      }
-      throw new AuthenticationError('Not logged in');
+      } else throw new AuthenticationError('Not logged in');
     },
     // get all users
     users: async () => {
@@ -26,8 +26,12 @@ const resolvers = {
     },
     //get all of a users projects
     projects: async (parent, { username }) => {
+      console.log(`\n\n\n\n\n\n`)
+      console.log(username)
       const params = username ? { username } : {};
-      let projectData = await User.findOne(params).populate('projects').sort({ createdAt: -1 })
+      let projectData = await User.findOne(params.email).populate('projects').sort({ createdAt: -1 })
+      console.log(`\n\n\nprojectData\n\n\n`)
+      console.log(projectData)
       return projectData;;
     },
     //get project by id

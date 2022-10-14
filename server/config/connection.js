@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/github-lite',
+  process.env.MONGODB_URI || 'mongodb+srv://testuser:testuser@cluster0.t19qxgk.mongodb.net/?retryWrites=true&w=majority',
   {
     useNewUrlParser: true, 
     useUnifiedTopology: true,

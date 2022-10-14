@@ -52,8 +52,6 @@ export const ADD_PROJECT = gql`
       description
       tag
       link
-      createdAt
-      username
     }
   }
 `;

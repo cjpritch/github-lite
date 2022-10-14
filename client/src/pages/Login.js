@@ -26,8 +26,9 @@ const Login = (props) => {
       const { data } = await login({
         variables: { ...formState },
       });
-
+console.log(data)
       Auth.login(data.login.token);
+      console.log("Doing auth")
     } catch (e) {
       console.error(e);
     }
